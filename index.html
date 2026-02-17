@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Juego Canvas 2D</title>
+    <title>🎯 Juego Canvas Pro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
@@ -13,9 +13,9 @@
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
     <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">🎯 Juego Canvas 2D</span>
+        <span class="navbar-brand fw-bold">🎯 Canvas Challenge</span>
         <span class="text-white">Desarrollado por Juan Fer</span>
     </div>
 </nav>
@@ -23,26 +23,43 @@
 <div class="container text-center mt-4">
 
     <!-- PANTALLA INICIAL -->
-    <div id="startScreen">
-        <h2>Bienvenido al Juego</h2>
+    <div id="startScreen" class="card shadow-lg p-4">
+        <h2 class="mb-3 text-primary">Bienvenido al Juego</h2>
         <p>
-            Elimina los círculos haciendo clic sobre ellos antes de que lleguen arriba.
-            Cada nivel aumenta la velocidad. Completa los 6 niveles para ganar.
+            Haz clic en los círculos antes de que escapen.
+            Cada nivel aumenta la velocidad.
+            Completa los 6 niveles para ganar.
         </p>
-        <button class="btn btn-success" id="startBtn">Empezar Juego</button>
+        <button class="btn btn-success btn-lg mt-3" id="startBtn">🚀 Empezar Juego</button>
     </div>
 
     <!-- PANEL INFO -->
-    <div id="gameInfo" class="row mt-3 d-none">
-        <div class="col-md-4">
-            <h5>Puntos: <span id="score">0</span></h5>
+    <div id="gameInfo" class="mt-4 d-none">
+
+        <div class="d-flex justify-content-center gap-3 mb-3 flex-wrap">
+
+            <span class="badge rounded-pill bg-primary p-3 fs-6">
+                🎯 Puntos: <span id="score">0</span>
+            </span>
+
+            <span class="badge rounded-pill bg-warning text-dark p-3 fs-6">
+                📈 Nivel: <span id="level">1</span>
+            </span>
+
         </div>
-        <div class="col-md-4">
-            <h5>Nivel: <span id="level">1</span></h5>
+
+        <!-- Barra progreso -->
+        <div class="progress mb-3" style="height: 25px;">
+            <div id="progressBar"
+                 class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                 role="progressbar"
+                 style="width: 0%">
+                0%
+            </div>
         </div>
-        <div class="col-md-4">
-            <h5>Progreso: <span id="progress">0%</span></h5>
-        </div>
+
+        <button class="btn btn-danger" id="resetBtn">🔄 Reiniciar Juego</button>
+
     </div>
 
     <!-- CANVAS -->
@@ -50,14 +67,13 @@
 
     <!-- MENSAJE FINAL -->
     <div id="endScreen" class="d-none mt-4">
-        <h2 class="text-success">🎉 ¡Felicidades! Completaste el juego 🎉</h2>
+        <h2 class="text-success fw-bold">🎉 ¡Felicidades! Completaste el juego 🎉</h2>
     </div>
 
 </div>
 
-<!-- FOOTER -->
-<footer class="bg-dark text-white text-center p-3 mt-4">
-    © 2026 - Juan Fer | Proyecto Canvas 2D
+<footer class="text-center p-3 mt-5 text-white bg-dark">
+    © 2026 - Juan Fer | Juego Canvas 2D Profesional
 </footer>
 
 <script src="js/game.js"></script>

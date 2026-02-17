@@ -1,6 +1,9 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+const progressBar = document.getElementById("progressBar");
+const resetBtn = document.getElementById("resetBtn");
+
 canvas.height = window.innerHeight / 2;
 canvas.width = window.innerWidth / 2;
 
@@ -247,8 +250,13 @@ canvas.addEventListener("click", (e) => {
             score++;
             scoreText.textContent = score;
 
+           /*  let percent = Math.floor((score / totalCircles) * 100);
+            progressText.textContent = percent + "%"; */
+
             let percent = Math.floor((score / totalCircles) * 100);
-            progressText.textContent = percent + "%";
+
+            progressBar.style.width = percent + "%";
+            progressBar.textContent = percent + "%";
         }
     });
 });
@@ -260,3 +268,27 @@ startBtn.addEventListener("click", () => {
     createLevel();
     updateGame();
 });
+
+
+function resetGame() {
+
+    cancelAnimationFrame(animationId);
+
+    score = 0;
+    currentLevel = 1;
+
+    scoreText.textContent = 0;
+    levelText.textContent = 1;
+
+    progressBar.style.width = "0%";
+    progressBar.textContent = "0%";
+
+    circles = [];
+
+    document.getElementById("endScreen").classList.add("d-none");
+
+    createLevel();
+    updateGame();
+}
+
+resetBtn.addEventListener("click", resetGame);
