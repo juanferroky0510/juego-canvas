@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego Canvas 2D</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">🎯 Juego Canvas 2D</span>
+        <span class="text-white">Desarrollado por Juan Fer</span>
+    </div>
+</nav>
+
+<div class="container text-center mt-4">
+
+    <!-- PANTALLA INICIAL -->
+    <div id="startScreen">
+        <h2>Bienvenido al Juego</h2>
+        <p>
+            Elimina los círculos haciendo clic sobre ellos antes de que lleguen arriba.
+            Cada nivel aumenta la velocidad. Completa los 6 niveles para ganar.
+        </p>
+        <button class="btn btn-success" id="startBtn">Empezar Juego</button>
+    </div>
+
+    <!-- PANEL INFO -->
+    <div id="gameInfo" class="row mt-3 d-none">
+        <div class="col-md-4">
+            <h5>Puntos: <span id="score">0</span></h5>
+        </div>
+        <div class="col-md-4">
+            <h5>Nivel: <span id="level">1</span></h5>
+        </div>
+        <div class="col-md-4">
+            <h5>Progreso: <span id="progress">0%</span></h5>
+        </div>
+    </div>
+
+    <!-- CANVAS -->
+    <canvas id="canvas"></canvas>
+
+    <!-- MENSAJE FINAL -->
+    <div id="endScreen" class="d-none mt-4">
+        <h2 class="text-success">🎉 ¡Felicidades! Completaste el juego 🎉</h2>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3 mt-4">
+    © 2026 - Juan Fer | Proyecto Canvas 2D
+</footer>
+
+<script src="js/game.js"></script>
+</body>
+</html>
