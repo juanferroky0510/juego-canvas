@@ -4,6 +4,9 @@ const ctx = canvas.getContext("2d");
 const progressBar = document.getElementById("progressBar");
 const resetBtn = document.getElementById("resetBtn");
 
+const pauseBtn = document.getElementById("pauseBtn");
+let isPaused = false;
+
 canvas.height = window.innerHeight / 2;
 canvas.width = window.innerWidth / 2;
 
@@ -28,8 +31,8 @@ class Circle {
         this.radius = radius;
         this.baseSpeed = speed;
 
-        this.baseColor = "blue";
-        this.color = "blue";
+        this.baseColor = "rgb(190, 18, 18)";
+        this.color = "rgb(190, 18, 18)";
 
         this.opacity = 1;
         this.removing = false;
@@ -163,6 +166,7 @@ function createLevel() {
 function updateGame() {
 
     animationId = requestAnimationFrame(updateGame);
+    if (isPaused) return; // 🔥 congela todo
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Colisiones reales
@@ -223,6 +227,7 @@ canvas.addEventListener("mousemove", (e) => {
 
 // Click
 canvas.addEventListener("click", (e) => {
+    if (isPaused) return; // 🔥 no permite sumar puntos
 
     const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
@@ -270,7 +275,7 @@ startBtn.addEventListener("click", () => {
 });
 
 
-function resetGame() {
+/* function resetGame() {
 
     cancelAnimationFrame(animationId);
 
@@ -291,4 +296,23 @@ function resetGame() {
     updateGame();
 }
 
-resetBtn.addEventListener("click", resetGame);
+resetBtn.addEventListener("click", resetGame); */
+
+resetBtn.addEventListener("click", () => {
+    location.reload(); // 🔥 refresca la página
+});
+
+pauseBtn.addEventListener("click", () => {
+
+    isPaused = !isPaused;
+
+    if (isPaused) {
+        pauseBtn.textContent = "▶ Reanudar";
+        pauseBtn.classList.remove("btn-warning");
+        pauseBtn.classList.add("btn-success");
+    } else {
+        pauseBtn.textContent = "⏸ Pausar";
+        pauseBtn.classList.remove("btn-success");
+        pauseBtn.classList.add("btn-warning");
+    }
+});
